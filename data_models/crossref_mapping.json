@@ -1,0 +1,779 @@
+{
+"crossref-mon-nov-29-125647-2021": {
+"aliases": {
+"crossref": {}
+},
+"mappings": {
+"properties": {
+"DOI": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"ISSN": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"URL": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"abstract": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"alternative-id": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"archive": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"article-number": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"author": {
+"properties": {
+"ORCID": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"affiliation": {
+"properties": {
+"name": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+}
+}
+},
+"authenticated-orcid": {
+"type": "boolean"
+},
+"family": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"given": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"name": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"suffix": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+}
+}
+},
+"container-title": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"content-domain": {
+"properties": {
+"crossmark-restriction": {
+"type": "boolean"
+},
+"domain": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+}
+}
+},
+"created": {
+"properties": {
+"date-parts": {
+"type": "long"
+},
+"date-time": {
+"type": "date"
+},
+"timestamp": {
+"properties": {
+"$numberLong": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+}
+}
+}
+}
+},
+"deposited": {
+"properties": {
+"date-parts": {
+"type": "long"
+},
+"date-time": {
+"type": "date"
+},
+"timestamp": {
+"properties": {
+"$numberLong": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+}
+}
+}
+}
+},
+"editor": {
+"properties": {
+"family": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"given": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+}
+}
+},
+"funder": {
+"properties": {
+"DOI": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"award": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"doi-asserted-by": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"name": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+}
+}
+},
+"indexed": {
+"properties": {
+"date-parts": {
+"type": "long"
+},
+"date-time": {
+"type": "date"
+},
+"timestamp": {
+"properties": {
+"$numberLong": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+}
+}
+}
+}
+},
+"is-referenced-by-count": {
+"type": "long"
+},
+"issn-type": {
+"properties": {
+"type": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"value": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+}
+}
+},
+"issue": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"issued": {
+"properties": {
+"date-parts": {
+"type": "long"
+}
+}
+},
+"license": {
+"properties": {
+"URL": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"content-version": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"delay-in-days": {
+"type": "long"
+},
+"start": {
+"properties": {
+"date-parts": {
+"type": "long"
+},
+"date-time": {
+"type": "date"
+},
+"timestamp": {
+"properties": {
+"$numberLong": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+}
+}
+}
+}
+}
+}
+},
+"link": {
+"properties": {
+"URL": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"content-type": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"content-version": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"intended-application": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+}
+}
+},
+"member": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"page": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"prefix": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"published-online": {
+"properties": {
+"date-parts": {
+"type": "long"
+}
+}
+},
+"published-print": {
+"properties": {
+"date-parts": {
+"type": "long"
+}
+}
+},
+"publisher": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"reference": {
+"properties": {
+"DOI": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"ISBN": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"article-title": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"author": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"doi-asserted-by": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"edition": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"first-page": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"isbn-type": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"issue": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"journal-title": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"key": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"series-title": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"unstructured": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"volume": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"volume-title": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"year": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+}
+}
+},
+"reference-count": {
+"type": "long"
+},
+"references-count": {
+"type": "long"
+},
+"relation": {
+"type": "object"
+},
+"score": {
+"type": "long"
+},
+"short-container-title": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"source": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"subject": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"subtitle": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"title": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"type": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"update-policy": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"update-to": {
+"properties": {
+"DOI": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"label": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"type": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+},
+"updated": {
+"properties": {
+"date-parts": {
+"type": "long"
+},
+"date-time": {
+"type": "date"
+},
+"timestamp": {
+"properties": {
+"$numberLong": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+}
+}
+}
+}
+}
+}
+},
+"volume": {
+"type": "text",
+"fields": {
+"keyword": {
+"type": "keyword",
+"ignore_above": 256
+}
+}
+}
+}
+},
+"settings": {
+"index": {
+"routing": {
+"allocation": {
+"include": {
+"_tier_preference": "data_content"
+}
+}
+},
+"number_of_shards": "1",
+"provided_name": "crossref-mon-nov-29-125647-2021",
+"creation_date": "1638187007363",
+"number_of_replicas": "1",
+"uuid": "eOr-o51uQreyYt1TdTEcVw",
+"version": {
+"created": "7150299"
+}
+}
+}
+}
+}

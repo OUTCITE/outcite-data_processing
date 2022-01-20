@@ -1,0 +1,307 @@
+"DOI"
+text
+
+"ISSN"
+text
+
+"URL"
+text
+
+"abstract"
+text
+
+"alternative-id"
+text
+
+"archive"
+text
+
+"article-number"
+text
+
+"author"
+
+    "ORCID"
+    text
+
+    "affiliation"
+
+        "name"
+        text
+
+    "authenticated-orcid"
+    boolean
+
+    "family"
+    text
+    
+    "given"
+    text
+
+    "name"
+    text
+
+    "suffix"
+    text
+
+"container-title"
+text
+
+"content-domain"
+
+    "crossmark-restriction"
+    boolean
+
+    "domain"
+    text
+
+"created"
+
+    "date-parts"
+    long
+
+    "date-time"
+    date
+
+    "timestamp"
+
+        "$numberLong"
+        text
+
+"deposited"
+
+    "date-parts"
+    long
+
+    "date-time"
+    date
+
+    "timestamp"
+
+        "$numberLong"
+        text
+
+"editor"
+
+    "family"
+    text
+
+    "given"
+    text
+
+"funder"
+
+    "DOI"
+    text
+
+    "award"
+    text
+
+    "doi-asserted-by"
+    text
+
+    "name"
+    text
+
+"indexed"
+
+    "date-parts"
+    long
+
+    "date-time"
+    date
+
+    "timestamp"
+
+        "$numberLong"
+        text
+
+"is-referenced-by-count"
+long
+
+"issn-type"
+
+    "type"
+    text
+
+    "value"
+    text
+
+"issue"
+text
+
+"issued"
+
+    "date-parts"
+    long
+
+"license"
+
+    "URL"
+    text
+
+    "content-version"
+    text
+
+    "delay-in-days"
+    long
+
+    "start"
+
+        "date-parts"
+        long
+
+        "date-time"
+        date
+
+        "timestamp"
+
+            "$numberLong"
+            text
+
+
+"link"
+
+    "URL"
+    text
+
+    "content-type"
+    text
+
+    "content-version"
+    text
+
+    "intended-application"
+    text
+
+"member"
+text
+
+"page"
+text
+
+"prefix"
+text
+
+"published-online"
+
+    "date-parts"
+    long
+
+"published-print"
+
+    "date-parts"
+    long
+
+"publisher"
+text
+
+"reference"
+
+    "DOI"
+    text
+
+    "ISBN"
+    text
+
+    "article-title"
+    text
+
+    "author"
+    text
+
+    "doi-asserted-by"
+    text
+
+    "edition"
+    text
+
+    "first-page"
+    text
+
+    "isbn-type"
+    text
+
+    "issue"
+    text
+
+    "journal-title"
+    text
+
+    "key"
+    text
+
+    "series-title"
+    text
+
+    "unstructured"
+    text
+
+    "volume"
+    text
+
+    "volume-title"
+    text
+
+    "year"
+    text
+
+"reference-count"
+long
+
+"references-count"
+long
+
+"relation"
+"object"
+
+"score"
+long
+
+"short-container-title"
+text
+
+"source"
+text
+
+"subject"
+text
+
+"subtitle"
+text
+
+"title"
+text
+
+"type"
+text
+
+"update-policy"
+text
+
+"update-to"
+
+    "DOI"
+    text
+
+    "label"
+    text
+
+    "type"
+    text
+
+    "updated"
+
+        "date-parts"
+        long
+
+        "date-time"
+        date
+
+        "timestamp"
+
+            "$numberLong"
+            text
+
+"volume"
+text
