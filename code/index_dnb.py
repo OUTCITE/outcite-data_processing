@@ -6,10 +6,11 @@ from collections import Counter
 from copy import deepcopy as copy
 import xml.etree.ElementTree as ET
 from elasticsearch import Elasticsearch as ES
-from elasticsearch.helpers import parallel_bulk as bulk
+from elasticsearch.helpers import streaming_bulk as bulk
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 #-GLOBAL OBJECTS----------------------------------------------------------------------------------------------------------------------------------
-_infiles = ['/home/outcite/dnb/dnb_all_dnbmarc_20211013-1.mrc.xml','/home/outcite/dnb/dnb_all_dnbmarc_20211013-2.mrc.xml','/home/outcite/dnb/dnb_all_dnbmarc_20211013-3.mrc.xml','/home/outcite/dnb/dnb_all_dnbmarc_20211013-4.mrc.xml'];
+#_infiles = ['/home/outcite/dnb/dnb_all_dnbmarc_20211013-1.mrc.xml','/home/outcite/dnb/dnb_all_dnbmarc_20211013-2.mrc.xml','/home/outcite/dnb/dnb_all_dnbmarc_20211013-3.mrc.xml','/home/outcite/dnb/dnb_all_dnbmarc_20211013-4.mrc.xml'];
+_infiles = ['/home/outcite/dnb/dnb_all_dnbmarc_20211013-3.mrc.xml','/home/outcite/dnb/dnb_all_dnbmarc_20211013-4.mrc.xml'];
 _prefix  = '{http://www.loc.gov/MARC21/slim}';
 _index   = 'dnb';#sys.argv[1];
 
@@ -178,4 +179,5 @@ for infile in _infiles:
             print('A document failed:', info['index']['_id'], info['index']['error']);
         elif i % 10000 == 0:
             print(i,end='\r');
+            client.indices.refresh(index=_index);
 #-------------------------------------------------------------------------------------------------------------------------------------------------
