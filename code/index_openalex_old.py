@@ -4,44 +4,40 @@ import gzip
 from elasticsearch import Elasticsearch as ES, helpers
 from elasticsearch.helpers import streaming_bulk as bulk
 from copy import deepcopy as copy
+import dateparser
 
 
 _dumpfolder = sys.argv[1]; #/home/outcite/openalex/openalex-snapshot/data/works/
-_upsert     = True if len(sys.argv) > 2 and sys.argv[2]=='upsert' else False;
 _index      = 'openalex'
 _chunk_size = 1000;
 
 _compressor = gzip;#lzma;
 
 _body = {
-    '_op_type': 'update' if _upsert else 'index',
+    '_op_type': 'index',
     '_index':   _index,
     '_id':      None,
-    '_source':  { 'doc':None, 'doc_as_upsert':True } if _upsert else None
+    '_source':  None
 }
+
 
 # object mapping for [license.start.timestamp] tried to parse field [timestamp] as object, but found a concrete value
 
 def remodel(doc):
-    #TODO: We should select the fields that we want because there was at least one weird field called 'abstract_inverted_index'
-    if 'abstract_inverted_index' in doc:
-        del doc['abstract_inverted_index'];
+    
     return doc;
 
 def load_openalex(filename):
     IN   = _compressor.open(filename, mode='rt');
     for line in IN:
-        body = copy(_body);
+        body            = copy(_body);
         try:
             doc = json.loads(line);
         except Exception as e:
             print(e); print('Some problem with this line:',line);
             continue;
-        body['_id'] = doc['id'];
-        if _upsert:
-            body['_source']['doc'] = remodel(doc);
-        else:
-            body['_source'] = remodel(doc);
+        body['_id']     = doc['id'];
+        body['_source'] = remodel(doc);
         yield body;
     IN.close();
 
