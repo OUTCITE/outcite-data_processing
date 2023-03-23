@@ -194,7 +194,7 @@ def parse(infile):
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 #-SCRIPT------------------------------------------------------------------------------------------------------------------------------------------
 
-client = ES(['localhost'],scheme='http',port=9200,timeout=60);
+client = ES(['http://localhost:9200'],timeout=60);#ES(['localhost'],scheme='http',port=9200,timeout=60);
 
 for infile in os.listdir(_dumpfolder):
     if not infile.endswith('.mrc.xml'):

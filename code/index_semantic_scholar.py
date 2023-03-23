@@ -43,7 +43,7 @@ def load_folder(foldername):
 #    print(body);
 
 #'''
-_client = ES(['localhost'],scheme='http',port=9200,timeout=60);
+_client = ES(['http://localhost:9200'],timeout=60);#ES(['localhost'],scheme='http',port=9200,timeout=60);
 
 i = 0;
 for success, info in bulk(_client,load_folder(_dumpfolder),chunk_size=_chunk_size):

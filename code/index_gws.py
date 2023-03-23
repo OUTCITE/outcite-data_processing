@@ -29,7 +29,7 @@ def remodel(source,collection):
     return source;
 
 def get_items_gws(batch,maxlen,index_source,typ):
-    client    = ES(['search.gesis.org/'],scheme='http',port=9200,timeout=60); #{"bool": {"must":[{"term":{"index_source": index_source }},{"term":{"type":typ}}]}}
+    client    = ES(['http://localhost:9200'],timeout=60);#ES(['search.gesis.org/'],scheme='http',port=9200,timeout=60); #{"bool": {"must":[{"term":{"index_source": index_source }},{"term":{"type":typ}}]}}
     query     = {"bool": {"must":[{"match":{"index_source":index_source}},{"term":{"type":typ}}]}} if index_source!=None else {"term":{"type":typ}};
     #query     = {"match":{"index_source":index_source}} if index_source!=None else {"term":{"type":typ}};
     page      = client.search(index='gesis',scroll='2m',size=batch,query=query);

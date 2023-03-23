@@ -65,7 +65,7 @@ def load_econbiz(filename):
     IN.close();
 
 
-_client = ES(['localhost'],scheme='http',port=9200,timeout=60);
+_client = ES(['http://localhost:9200'],timeout=60);#ES(['localhost'],scheme='http',port=9200,timeout=60);
 
 i = 0;
 for success, info in bulk(_client,load_econbiz(_dumpfile),chunk_size=_chunk_size):
