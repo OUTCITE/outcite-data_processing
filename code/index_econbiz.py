@@ -8,7 +8,7 @@ from copy import deepcopy as copy
 
 
 _dumpfile   = sys.argv[1];
-_index      = 'econbiz'
+_index      = 'econbiz_new'
 _chunk_size = 10000;
 
 _body = {
@@ -33,7 +33,7 @@ def remodel(doc):
                     ('identifier_oclc',         'oclc_ids'),
                     ('identifier_isbn',         'isbns'),
                     ('identifier_doi',          'doi'),
-                    ('identifier_url',          'urls'),
+                    ('identifierefstringerr_url',          'urls'),
                     ('subject',                 'topics'),
                     ('subject_gnd',             'topics_gnd'),
                     ('subject_stw',             'topics_stw'),
@@ -50,8 +50,10 @@ def remodel(doc):
                    ]:
         if fro in doc:
             doc_[to] = doc[fro];
-    doc_['doi'] = doc_['doi'][0] if 'doi' in doc_ and isinstance(doc_['doi'],list) and len(doc_['doi'])>0 else None;
-    doc         = {field:doc_[field] for field in doc_ if doc_[field]};
+    doc_['doi']   = doc_['doi'][0] if 'doi' in doc_ and isinstance(doc_['doi'],list) and len(doc_['doi'])>0 else None;
+    #parsed_doc    = refstringer.collectionObj2modelObj('econbiz',doc);
+    doc           = {field:doc_[field] for field in doc_ if doc_[field]};
+    #doc['refstr'] = parsed_doc['reference'] if 'reference' in parsed_doc else None;
     return doc;
 
 def load_econbiz(filename):
