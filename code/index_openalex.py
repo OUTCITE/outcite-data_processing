@@ -9,7 +9,7 @@ from copy import deepcopy as copy
 _dumpfolder = sys.argv[1]; #/home/outcite/openalex/openalex-snapshot/data/works/
 _upsert     = True if len(sys.argv) > 2 and sys.argv[2]=='upsert' else False;
 _index      = 'openalex'
-_chunk_size = 1000;
+_chunk_size = 10000;
 
 _compressor = gzip;#lzma;
 

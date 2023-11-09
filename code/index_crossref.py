@@ -5,13 +5,15 @@ import gzip
 from elasticsearch import Elasticsearch as ES, helpers
 from elasticsearch.helpers import streaming_bulk as bulk
 from copy import deepcopy as copy
+import codecs
+
 
 
 _dumpfile   = sys.argv[1];#'crossref-works.2018-01-21.json.xz';
 _index      = 'crossref'
-_chunk_size = 1000;
+_chunk_size = 10000;
 
-_compressor = gzip;#lzma;
+_compressor = lzma;
 
 _body = {
     '_op_type': 'index',
@@ -28,26 +30,31 @@ def remodel(doc):
     if 'created' in doc:
         if 'timestamp' in doc['created']:
             if isinstance(doc['created']['timestamp'],dict) and '$numberLong' in doc['created']['timestamp']:
-                doc['created']['timestamp'] = doc['created']['timestamp']['$numberLong'];
+                doc['creation_time'] = doc['created']['timestamp']['$numberLong'];
+        del doc['created'];
     if 'deposited' in doc:
         if 'timestamp' in doc['deposited']:
             if isinstance(doc['deposited']['timestamp'],dict) and '$numberLong' in doc['deposited']['timestamp']:
-                doc['deposited']['timestamp'] = doc['deposited']['timestamp']['$numberLong'];
+                doc['deposit_time'] = doc['deposited']['timestamp']['$numberLong'];
+        del doc['deposited'];
     if 'indexed' in doc:
         if 'timestamp' in doc['indexed']:
             if isinstance(doc['indexed']['timestamp'],dict) and '$numberLong' in doc['indexed']['timestamp']:
-                doc['indexed']['timestamp'] = doc['indexed']['timestamp']['$numberLong'];
+                doc['index_time'] = doc['indexed']['timestamp']['$numberLong'];
+        del doc['indexed'];
     if 'update-to' in doc:
         if 'updated' in doc['update-to']:
             if 'timestamp' in doc['update-to']['updated']:
                 if isinstance(doc['update-to']['updated']['timestamp'],dict) and '$numberLong' in doc['update-to']['updated']['timestamp']:
-                    doc['update-to']['updated']['timestamp'] = doc['update-to']['updated']['timestamp']['$numberLong'];
+                    doc['update_time'] = doc['update-to']['updated']['timestamp']['$numberLong'];
+        del doc['update-to'];
     if 'license' in doc:
-        for i in range(len(doc['license'])):
-            if isinstance(doc['license'][i],dict) and 'start' in doc['license'][i]:
-                if isinstance(doc['license'][i]['start'],dict) and 'timestamp' in doc['license'][i]['start']:
-                    if isinstance(doc['license'][i]['start']['timestamp'],dict) and '$numberLong' in doc['license'][i]['start']['timestamp']:
-                        doc['license'][i]['start']['timestamp'] = doc['license'][i]['start']['timestamp']['$numberLong'];
+    #    for i in range(len(doc['license'])):
+    #        if isinstance(doc['license'][i],dict) and 'start' in doc['license'][i]:
+    #            if isinstance(doc['license'][i]['start'],dict) and 'timestamp' in doc['license'][i]['start']:
+    #                if isinstance(doc['license'][i]['start']['timestamp'],dict) and '$numberLong' in doc['license'][i]['start']['timestamp']:
+    #                    doc['license'][i]['start']['timestamp'] = doc['license'][i]['start']['timestamp']['$numberLong'];
+        del doc['license'];
     return doc;
 
 def check(doc):
@@ -75,6 +82,7 @@ def check(doc):
     return doc;
 
 def load_crossref_(filename):
+    #reader = codecs.getreader("utf-8")
     IN = _compressor.open(filename, mode='rt');
     for line in IN:
         body            = copy(_body);
@@ -90,12 +98,12 @@ def make_id(doi):
     return string;
 
 def load_crossref(filename):
-    IN   = _compressor.open(filename, mode='rt');
+    IN   = open(filename);#_compressor.open(filename, mode='rt');
     JSON = json.load(IN);    
     for doc in JSON['items']:
         body            = copy(_body);
         body['_id']     = make_id(doc['DOI']);
-        body['_source'] = doc;
+        body['_source'] = remodel(doc);
         yield body;
     IN.close();
 
@@ -103,7 +111,7 @@ def load_crossref(filename):
 _client = ES(['http://localhost:9200'],timeout=60);#ES(['localhost'],scheme='http',port=9200,timeout=60);
 
 i = 0;
-for success, info in bulk(_client,load_crossref(_dumpfile),chunk_size=_chunk_size):
+for success, info in bulk(_client,load_crossref_(_dumpfile),chunk_size=_chunk_size):
     i += 1;
     if not success:
         print('A document failed:', info['index']['_id'], info['index']['error']);
